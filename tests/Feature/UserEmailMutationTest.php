@@ -31,7 +31,7 @@ class UserEmailMutationTest extends TestCase
 
         /**
          * Expected:
-         *  - 2 EmailMutated events fired,
+         *  - 2 EmailMutated events dispatched,
          *  - Resulting in 2 AlertEmailMutated jobs dispatched via event listener.
          */
         $user->email = 'one@example.com';
