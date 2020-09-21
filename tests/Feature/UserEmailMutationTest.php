@@ -18,8 +18,7 @@ class UserEmailMutationTest extends TestCase
      * 1. https://github.com/illuminate/support/blob/master/Testing/Fakes/BusFake.php#L79
      *      -> https://github.com/sebastianbergmann/phpunit/blob/master/src/Framework/Assert.php#L1314
      *      -> https://github.com/sebastianbergmann/phpunit/blob/master/src/Framework/Constraint/IsIdentical.php#L64
-     *      -> Should be is_int(), not is_numeric() because PHPUnit::assertSame() uses "===" for comparison
-     *         against finite, non-NAN float.
+     *      -> Should be is_int(), not is_numeric() because PHPUnit::assertSame() uses "===" comparison for non-float.
      *
      * 2. https://github.com/illuminate/support/blob/master/Testing/Fakes/BusFake.php#L141
      *      - Same reasoning as (1).
