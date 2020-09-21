@@ -32,7 +32,7 @@ class UserEmailMutationTest extends TestCase
         /**
          * Expected:
          *  - 2 EmailMutated events fired,
-         *  - Resulting in 2 AlertUserEmailMutated jobs dispatched via event listener.
+         *  - Resulting in 2 AlertEmailMutated jobs dispatched via event listener.
          */
         $user->email = 'one@example.com';
         $user->email = 'two@example.com';
