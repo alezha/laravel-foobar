@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\Users\EmailMutated;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,4 +38,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * --------------------------------------------------------------------------------
+     * Relations.
+     */
+    public function emailMutations()
+    {
+        return $this->hasMany(UserEmailMutation::class, 'user_id', 'id');
+    }
+
+    /**
+     * --------------------------------------------------------------------------------
+     * Accessors and Mutators.
+     */
+    public function setEmailAttribute($value)
+    {
+        $prev = $this->attributes['email'] ?? null;
+        $this->attributes['email'] = $value;
+
+        if (isset($prev, $value) && $prev !== $value) {
+            event(new EmailMutated($this, $prev, $value));
+        }
+    }
+
+    /**
+     * --------------------------------------------------------------------------------
+     */
 }
