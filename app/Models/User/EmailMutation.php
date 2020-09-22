@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserEmailMutation extends Model
+class EmailMutation extends Model
 {
     use HasFactory;
+
+    protected $table = 'user_email_mutations';
 
     protected $fillable = [
         'old_email', 'new_email',

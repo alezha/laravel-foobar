@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/auth-test', function () {
+
+});
+
+Route::get('/test', function () {
+    $user = new User([
+        'email' => 'test@example.com',
+    ]);
+
+    $user = User::firstOrCreate(
+        ['id' => 1],
+        [
+            'name' => 'test',
+            'email' => 'test@example.com',
+            'password' => \Hash::make(bin2hex(random_bytes(8)))
+        ],
+    );
+
+    $user->email = 'asdf';
+    $user->email = 'ok...';
 });

@@ -6,7 +6,10 @@
 .env
 .env.backup
 .phpunit.result.cache
+auth.json
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+.idea/

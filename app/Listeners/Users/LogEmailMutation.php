@@ -4,7 +4,7 @@ namespace App\Listeners\Users;
 
 use App\Events\Users\EmailMutated;
 use App\Jobs\Users\AlertEmailMutated;
-use App\Models\UserEmailMutation;
+use App\Models\User\EmailMutation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -30,7 +30,7 @@ class LogEmailMutation
     {
         AlertEmailMutated::dispatch($event);
 
-        $mutation = new UserEmailMutation([
+        $mutation = new EmailMutation([
             'old_email' => $event->old_email,
             'new_email' => $event->new_email,
         ]);
